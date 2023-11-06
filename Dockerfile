@@ -6,10 +6,11 @@ COPY config.yml /etc/grafana-agent/config.yml
 EXPOSE 8428
 
 # Set the config file as the agent's configuration
-CMD [
-  "grafana-agent", 
+ENTRYPOINT [
+  "/usr/bin/grafana-agent", 
   "--config.file=/etc/grafana-agent/config.yml", 
-  "--server.http.address=0.0.0.0:8428"
+  "--server.http.address=0.0.0.0",
+  "--server.http.port=8428",
 ]
 
 # CMD ["grafana-agent"]
